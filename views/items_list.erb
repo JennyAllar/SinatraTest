@@ -1,10 +1,12 @@
 <html>
 <body>
 <h1>List of Items</h1>
-<a href="/items/new">Create a new item.</a>
+<a href="/items/new">Create a new item</a>
 <ul>
-  <% [ItemsRpository.new.each do |item| %>
-      <li><%= item.name %> - <a href="/items/<%= item.id %>">Show item</a></li>
+  <% ItemsRepository.new.items.each do |item|%>
+      <% if item.name.downcase.include?(@user_input.to_s.downcase) %>
+          <li> <%=item.name%> <a href="/items/<%= item.id %>">Show item</a>
+        <% end %>
   <% end %>
 </ul>
 </body>

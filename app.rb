@@ -8,5 +8,6 @@ get '/' do
 end
 
 get '/items' do
+  @user_input = params[:filter]
   erb :items_list
 end
